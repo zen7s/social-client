@@ -1,10 +1,10 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import { NextUIProvider } from "@nextui-org/react"
+import { ThemeProvider } from "./shared/components/ThemeProvider/ThemeProvider"
 
 const container = document.getElementById("root")
 
@@ -13,11 +13,13 @@ if (container) {
 
   root.render(
     <React.StrictMode>
-      <NextUIProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </NextUIProvider>
+      <Provider store={store}>
+        <NextUIProvider>
+          <ThemeProvider>
+            <h1>Text</h1>
+          </ThemeProvider>
+        </NextUIProvider>
+      </Provider>
     </React.StrictMode>,
   )
 } else {
